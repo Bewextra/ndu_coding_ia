@@ -3,8 +3,8 @@
   border-radius: 20px;
   padding: 1.5rem 1rem;
   box-shadow: 
-    0 4px 16px rgba(6, 182, 212, 0.15),
-    0 2px 8px rgba(16, 185, 129, 0.1);
+    0 4px 16px rgba(8, 145, 178, 0.18),
+    0 2px 8px rgba(5, 150, 105, 0.12);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,7 +12,7 @@
   min-width: 140px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  border: 1px solid rgba(6, 182, 212, 0.15);
+  border: 1px solid rgba(8, 145, 178, 0.18);
   backdrop-filter: blur(12px);
   position: relative;
   overflow: hidden;
@@ -44,7 +44,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #06b6d4 0%, #10b981 100%);
+  background: linear-gradient(90deg, #0891b2 0%, #059669 100%);
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
@@ -56,10 +56,10 @@
 .forecast-card:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 
-    0 12px 32px rgba(6, 182, 212, 0.25),
-    0 6px 16px rgba(16, 185, 129, 0.2),
-    0 0 40px rgba(6, 182, 212, 0.15);
-  border-color: rgba(6, 182, 212, 0.4);
+    0 12px 32px rgba(8, 145, 178, 0.3),
+    0 6px 16px rgba(5, 150, 105, 0.25),
+    0 0 40px rgba(8, 145, 178, 0.2);
+  border-color: rgba(8, 145, 178, 0.45);
 }
 
 .forecast-card:active {

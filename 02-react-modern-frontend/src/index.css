@@ -8,11 +8,13 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   
-  /* Modern color variables */
-  --cyan-500: #06b6d4;
-  --cyan-600: #0891b2;
-  --emerald-500: #10b981;
-  --emerald-600: #059669;
+  /* Modern color variables - Darker for better contrast */
+  --cyan-500: #0891b2;
+  --cyan-600: #0e7490;
+  --cyan-700: #155e75;
+  --emerald-500: #059669;
+  --emerald-600: #047857;
+  --emerald-700: #065f46;
   
   /* Animation durations */
   --transition-fast: 0.2s;

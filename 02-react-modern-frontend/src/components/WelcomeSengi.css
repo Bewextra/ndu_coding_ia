@@ -1,20 +1,53 @@
 .welcome-sengi-container {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.97) 100%);
-  border-radius: 24px;
-  padding: 3rem 2rem;
+  background: 
+    linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.98) 100%),
+    radial-gradient(circle at 30% 40%, rgba(8, 145, 178, 0.03) 0%, transparent 60%),
+    radial-gradient(circle at 70% 60%, rgba(5, 150, 105, 0.03) 0%, transparent 60%);
+  border-radius: 32px;
+  padding: 4rem 2rem;
   box-shadow: 
-    0 8px 32px rgba(6, 182, 212, 0.15),
-    0 4px 16px rgba(16, 185, 129, 0.1);
+    0 12px 48px rgba(8, 145, 178, 0.18),
+    0 6px 24px rgba(5, 150, 105, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
-  min-height: 350px;
+  gap: 2rem;
+  min-height: 500px;
   position: relative;
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(6, 182, 212, 0.2);
+  backdrop-filter: blur(16px);
+  border: 2px solid rgba(8, 145, 178, 0.15);
   animation: fadeInScale 0.6s ease-out;
+  overflow: hidden;
+}
+
+.welcome-sengi-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 60px,
+      rgba(8, 145, 178, 0.015) 60px,
+      rgba(8, 145, 178, 0.015) 120px
+    );
+  animation: subtleMove 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes subtleMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
 }
 
 @keyframes fadeInScale {
@@ -30,6 +63,9 @@
 
 .welcome-sengi {
   animation: welcomeBob 3s ease-in-out infinite;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 8px 20px rgba(8, 145, 178, 0.15));
 }
 
 @keyframes welcomeBob {
@@ -43,16 +79,17 @@
 
 .question-mark {
   position: absolute;
-  top: 15%;
-  right: 38%;
-  font-size: 4rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
+  top: 20%;
+  right: 24%;
+  font-size: 5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #0e7490 0%, #047857 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: questionFloat 2s ease-in-out infinite, questionPulse 1.5s ease-in-out infinite;
-  filter: drop-shadow(0 4px 12px rgba(6, 182, 212, 0.3));
+  filter: drop-shadow(0 6px 16px rgba(8, 145, 178, 0.4));
+  z-index: 3;
 }
 
 @keyframes questionFloat {
@@ -76,41 +113,71 @@
 }
 
 .welcome-text {
-  font-size: 1.125rem;
-  font-weight: 500;
-  color: #4a5568;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #334155;
   margin: 0;
   text-align: center;
-  max-width: 300px;
+  max-width: 400px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  z-index: 2;
+  position: relative;
+}
+
+@media (max-width: 1024px) {
+  .question-mark {
+    top: 18%;
+    right: 22%;
+    font-size: 4.5rem;
+  }
+  
+  .welcome-sengi-container {
+    min-height: 450px;
+    padding: 3.5rem 2rem;
+  }
 }
 
 @media (max-width: 768px) {
   .welcome-sengi-container {
-    padding: 2rem 1.5rem;
-    min-height: 300px;
+    padding: 3rem 1.5rem;
+    min-height: 400px;
   }
 
   .welcome-sengi {
-    width: 90px;
-    height: 90px;
+    width: 160px;
+    height: 160px;
   }
 
   .question-mark {
-    font-size: 3rem;
-    right: 32%;
-    top: 12%;
+    font-size: 4rem;
+    right: 18%;
+    top: 16%;
   }
 
   .welcome-text {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
 }
 
 @media (max-width: 480px) {
+  .welcome-sengi {
+    width: 140px;
+    height: 140px;
+  }
+  
   .question-mark {
-    font-size: 2.5rem;
-    right: 28%;
-    top: 15%;
+    font-size: 3.5rem;
+    right: 16%;
+    top: 18%;
+  }
+  
+  .welcome-text {
+    font-size: 1.1rem;
+  }
+  
+  .welcome-sengi-container {
+    padding: 2.5rem 1rem;
+    min-height: 350px;
   }
 }
 

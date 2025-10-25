@@ -13,8 +13,8 @@ const Sengi = ({ temperature, description, mode = 'weather' }: SengiProps) => {
       <div className="sengi-container">
         <svg 
           className="sengi sengi-loading" 
-          width="140" 
-          height="140" 
+          width="180" 
+          height="180" 
           viewBox="0 0 240 180" 
           fill="none" 
           xmlns="http://www.w3.org/2000/svg"
@@ -198,8 +198,8 @@ const Sengi = ({ temperature, description, mode = 'weather' }: SengiProps) => {
     <div className="sengi-container">
       <svg 
         className="sengi" 
-        width="120" 
-        height="120" 
+        width="150" 
+        height="150" 
         viewBox="0 0 220 180" 
         fill="none" 
         xmlns="http://www.w3.org/2000/svg"
