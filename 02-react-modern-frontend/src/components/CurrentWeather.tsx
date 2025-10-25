@@ -1,4 +1,5 @@
 import './CurrentWeather.css';
+import Sengi from './Sengi';
 
 interface WeatherData {
   city: string;
@@ -69,6 +70,7 @@ const CurrentWeather = ({ weatherData }: CurrentWeatherProps) => {
             <span className="weather-feels-like">Feels like {Math.round(feelsLike)}°</span>
             <span className="weather-description">{description}</span>
           </div>
+          <Sengi />
         </div>
 
         <div className="weather-details">

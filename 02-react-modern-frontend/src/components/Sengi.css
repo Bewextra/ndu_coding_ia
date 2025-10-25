@@ -1,0 +1,45 @@
+.sengi-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sengi {
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.15));
+}
+
+/* Blinking animation for the eyes */
+.sengi-eyes {
+  animation: sengiBlink 4s ease-in-out infinite;
+}
+
+@keyframes sengiBlink {
+  0%, 48%, 52%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  90%, 94% {
+    opacity: 0;
+  }
+  92%, 96% {
+    opacity: 1;
+  }
+}
+
+/* Responsive sizing */
+@media (max-width: 768px) {
+  .sengi {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sengi {
+    width: 80px;
+    height: 80px;
+  }
+}
+
