@@ -1,9 +1,10 @@
 import './LoadingSpinner.css';
+import Sengi from './Sengi';
 
 const LoadingSpinner = () => {
   return (
     <div className="loading-container">
-      <div className="loading-spinner"></div>
+      <Sengi mode="loading" />
       <p className="loading-text">Fetching weather data...</p>
     </div>
   );

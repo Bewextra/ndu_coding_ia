@@ -11,6 +11,15 @@ interface WeatherData {
   icon: string;
 }
 
+interface ForecastDay {
+  date: Date;
+  dayName: string;
+  tempHigh: number;
+  tempLow: number;
+  description: string;
+  icon: string;
+}
+
 interface WeatherResponse {
   name: string;
   sys: {
@@ -32,6 +41,7 @@ interface WeatherResponse {
 
 const useWeather = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | undefined>(undefined);
+  const [forecastData, setForecastData] = useState<ForecastDay[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [searchedCity, setSearchedCity] = useState('');
@@ -78,6 +88,17 @@ const useWeather = () => {
 
       setWeatherData(transformedData);
       setError('');
+
+      // Fetch 5-day forecast
+      const forecastResponse = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(city)}&units=metric&appid=${apiKey}`
+      );
+
+      if (forecastResponse.ok) {
+        const forecastData = await forecastResponse.json();
+        const processedForecast = processForecastData(forecastData);
+        setForecastData(processedForecast);
+      }
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
@@ -85,13 +106,60 @@ const useWeather = () => {
         setError('An unexpected error occurred. Please try again.');
       }
       setWeatherData(undefined);
+      setForecastData([]);
     } finally {
       setLoading(false);
     }
   };
 
+  // Process forecast data to get daily forecasts
+  const processForecastData = (data: any): ForecastDay[] => {
+    const dailyData: { [key: string]: any[] } = {};
+
+    // Group forecast data by day
+    data.list.forEach((item: any) => {
+      const date = new Date(item.dt * 1000);
+      const dateKey = date.toDateString();
+
+      if (!dailyData[dateKey]) {
+        dailyData[dateKey] = [];
+      }
+      dailyData[dateKey].push(item);
+    });
+
+    // Process each day to get high/low temps and most common weather
+    const forecastDays: ForecastDay[] = Object.entries(dailyData)
+      .slice(0, 5) // Get only next 5 days
+      .map(([dateKey, items]) => {
+        const temps = items.map((item: any) => item.main.temp);
+        const tempHigh = Math.max(...temps);
+        const tempLow = Math.min(...temps);
+
+        // Get the weather condition that appears most around midday
+        const middayItem = items.find((item: any) => {
+          const hour = new Date(item.dt * 1000).getHours();
+          return hour >= 12 && hour <= 15;
+        }) || items[0];
+
+        const date = new Date(dateKey);
+        const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
+
+        return {
+          date,
+          dayName,
+          tempHigh,
+          tempLow,
+          description: middayItem.weather[0].description,
+          icon: middayItem.weather[0].icon,
+        };
+      });
+
+    return forecastDays;
+  };
+
   return {
     weatherData,
+    forecastData,
     loading,
     error,
     searchedCity,

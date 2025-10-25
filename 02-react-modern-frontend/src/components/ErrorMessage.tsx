@@ -3,9 +3,14 @@ import './ErrorMessage.css';
 interface ErrorMessageProps {
   message: string;
   cityName?: string;
+  onRetry: () => void;
 }
 
-const ErrorMessage = ({ message, cityName }: ErrorMessageProps) => {
+const ErrorMessage = ({ message, cityName, onRetry }: ErrorMessageProps) => {
+  const handleRetry = () => {
+    onRetry();
+  };
+
   return (
     <div className="error-container">
       <div className="error-icon">
@@ -19,6 +24,13 @@ const ErrorMessage = ({ message, cityName }: ErrorMessageProps) => {
       {cityName && <p className="error-city">Searched for: <strong>{cityName}</strong></p>}
       <p className="error-message">{message}</p>
       <p className="error-hint">Try searching for another city or check your spelling.</p>
+      <button 
+        className="retry-button" 
+        onClick={handleRetry}
+        aria-label="Try again"
+      >
+        Try Again
+      </button>
     </div>
   );
 };

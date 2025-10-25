@@ -4,14 +4,22 @@ import CurrentWeather from './components/CurrentWeather';
 import FavoriteCities from './components/FavoriteCities';
 import LoadingSpinner from './components/LoadingSpinner';
 import ErrorMessage from './components/ErrorMessage';
+import WeatherForecast from './components/WeatherForecast';
+import WelcomeSengi from './components/WelcomeSengi';
 import useWeather from './hooks/useWeather';
 import './App.css';
 
 const App = () => {
-  const { weatherData, loading, error, searchedCity, fetchWeather } = useWeather();
+  const { weatherData, forecastData, loading, error, searchedCity, fetchWeather } = useWeather();
 
   const handleSearch = (city: string) => {
     fetchWeather(city);
+  };
+
+  const handleRetry = () => {
+    if (searchedCity) {
+      fetchWeather(searchedCity);
+    }
   };
 
   return (
@@ -28,9 +36,14 @@ const App = () => {
             {loading ? (
               <LoadingSpinner />
             ) : error ? (
-              <ErrorMessage message={error} cityName={searchedCity} />
+              <ErrorMessage message={error} cityName={searchedCity} onRetry={handleRetry} />
+            ) : weatherData ? (
+              <>
+                <CurrentWeather weatherData={weatherData} />
+                {weatherData && <WeatherForecast forecastData={forecastData} />}
+              </>
             ) : (
-              <CurrentWeather weatherData={weatherData} />
+              <WelcomeSengi />
             )}
           </div>
 

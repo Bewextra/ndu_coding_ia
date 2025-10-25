@@ -3,9 +3,99 @@ import './Sengi.css';
 interface SengiProps {
   temperature?: number;
   description?: string;
+  mode?: 'weather' | 'loading';
 }
 
-const Sengi = ({ temperature, description }: SengiProps) => {
+const Sengi = ({ temperature, description, mode = 'weather' }: SengiProps) => {
+  // If in loading mode, show eating animation
+  if (mode === 'loading') {
+    return (
+      <div className="sengi-container">
+        <svg 
+          className="sengi sengi-loading" 
+          width="140" 
+          height="140" 
+          viewBox="0 0 240 180" 
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* Tail (behind) */}
+          <path 
+            d="M 30 90 Q 15 85 10 95 Q 8 105 12 110" 
+            stroke="#8B7355" 
+            strokeWidth="6" 
+            fill="none" 
+            strokeLinecap="round"
+          />
+          
+          {/* Back legs */}
+          <rect x="45" y="110" width="10" height="30" rx="5" fill="#8B7355"/>
+          <rect x="65" y="110" width="10" height="30" rx="5" fill="#8B7355"/>
+          <ellipse cx="50" cy="142" rx="6" ry="4" fill="#6D5A47"/>
+          <ellipse cx="70" cy="142" rx="6" ry="4" fill="#6D5A47"/>
+          
+          {/* Body (side view - elongated) */}
+          <ellipse cx="80" cy="90" rx="55" ry="35" fill="#A0826D"/>
+          
+          {/* Front legs */}
+          <rect x="110" y="105" width="9" height="28" rx="4" fill="#8B7355"/>
+          <rect x="125" y="105" width="9" height="28" rx="4" fill="#8B7355"/>
+          <ellipse cx="115" cy="135" rx="5" ry="3" fill="#6D5A47"/>
+          <ellipse cx="130" cy="135" rx="5" ry="3" fill="#6D5A47"/>
+          
+          {/* Head (side view) */}
+          <ellipse cx="135" cy="75" rx="28" ry="25" fill="#A0826D"/>
+          
+          {/* Round ear */}
+          <ellipse cx="130" cy="55" rx="14" ry="18" fill="#A0826D"/>
+          <ellipse cx="130" cy="55" rx="9" ry="13" fill="#C9A88A"/>
+          
+          {/* Long snout/nose extending forward */}
+          <ellipse cx="160" cy="75" rx="25" ry="12" fill="#8B7355"/>
+          
+          {/* Nose tip (black) */}
+          <ellipse cx="183" cy="75" rx="5" ry="6" fill="#2C1810"/>
+          
+          {/* Whiskers - animated */}
+          <g className="whiskers-wiggle">
+            <line x1="170" y1="70" x2="200" y2="65" stroke="#2C1810" strokeWidth="1.5"/>
+            <line x1="175" y1="75" x2="205" y2="75" stroke="#2C1810" strokeWidth="1.5"/>
+            <line x1="170" y1="80" x2="200" y2="85" stroke="#2C1810" strokeWidth="1.5"/>
+          </g>
+          
+          {/* Happy eating eyes */}
+          <g className="sengi-eyes">
+            <path d="M 140 70 Q 145 67 150 70" stroke="#2C1810" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+            <ellipse cx="147" cy="67" rx="2" ry="3" fill="#FFFFFF"/>
+          </g>
+          
+          {/* Eating mouth - animated */}
+          <g className="eating-mouth">
+            <ellipse cx="165" cy="80" rx="8" ry="6" fill="#2C1810" opacity="0.5"/>
+          </g>
+          
+          {/* Belly detail */}
+          <ellipse cx="80" cy="100" rx="40" ry="25" fill="#C9A88A" opacity="0.6"/>
+          
+          {/* Happy blush */}
+          <ellipse cx="128" cy="80" rx="4" ry="3" fill="#FFB6C1" opacity="0.5"/>
+          
+          {/* Static apple in front of sengi */}
+          <g className="apple-static">
+            {/* Apple body */}
+            <ellipse cx="195" cy="90" rx="12" ry="14" fill="#FF4444"/>
+            {/* Apple highlight */}
+            <ellipse cx="192" cy="85" rx="4" ry="5" fill="#FF8888" opacity="0.7"/>
+            {/* Apple stem */}
+            <path d="M 195 76 Q 195 72 197 70" stroke="#8B4513" strokeWidth="2" fill="none" strokeLinecap="round"/>
+            {/* Apple leaf */}
+            <ellipse cx="198" cy="73" rx="4" ry="2.5" fill="#90EE90" transform="rotate(-30 198 73)"/>
+          </g>
+        </svg>
+      </div>
+    );
+  }
+  
   // Determine sengi's mood based on weather
   const getWeatherCondition = () => {
     const desc = description?.toLowerCase() || '';
