@@ -1,12 +1,36 @@
-// Your App component will go here
+import Header from './components/Header';
+import SearchBar from './components/SearchBar';
+import CurrentWeather from './components/CurrentWeather';
+import FavoriteCities from './components/FavoriteCities';
+import './App.css';
 
-function App() {
+const App = () => {
+  const handleSearch = (city: string) => {
+    console.log('Searching for:', city);
+    // TODO: Implement weather API call with the city
+  };
+
   return (
-    <div>
-      <h1>React Modern Frontend</h1>
-      <p>Follow the prompts in README.md to build your application!</p>
-    </div>
-  )
-}
+    <div className="app">
+      <Header />
+      
+      <div className="app-container">
+        <div className="search-section">
+          <SearchBar onSearch={handleSearch} />
+        </div>
 
-export default App
+        <div className="main-content">
+          <div className="weather-section">
+            <CurrentWeather />
+          </div>
+
+          <div className="sidebar-section">
+            <FavoriteCities />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default App;

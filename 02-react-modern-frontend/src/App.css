@@ -1,0 +1,55 @@
+.app {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f7fafc 0%, #edf2f7 100%);
+}
+
+.app-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.search-section {
+  margin-bottom: 2rem;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 2rem;
+  align-items: start;
+}
+
+.weather-section {
+  width: 100%;
+}
+
+.sidebar-section {
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .sidebar-section {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .search-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .main-content {
+    gap: 1.5rem;
+  }
+}
+

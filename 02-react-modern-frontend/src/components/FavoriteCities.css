@@ -1,0 +1,56 @@
+.favorite-cities {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+}
+
+.favorite-cities-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.favorite-cities-empty {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: #718096;
+}
+
+.favorite-icon {
+  color: #e2e8f0;
+  margin-bottom: 1rem;
+}
+
+.favorite-cities-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4a5568;
+  margin-bottom: 0.5rem;
+}
+
+.favorite-cities-hint {
+  font-size: 0.875rem;
+  color: #a0aec0;
+  line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+  .favorite-cities {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .favorite-cities {
+    padding: 1.25rem;
+  }
+  
+  .favorite-cities-title {
+    font-size: 1.1rem;
+  }
+}
+
