@@ -66,21 +66,12 @@ const CurrentWeather = ({ weatherData }: CurrentWeatherProps) => {
           />
           <div className="weather-temp-container">
             <span className="weather-temperature">{Math.round(temperature)}°</span>
+            <span className="weather-feels-like">Feels like {Math.round(feelsLike)}°</span>
             <span className="weather-description">{description}</span>
           </div>
         </div>
 
         <div className="weather-details">
-          <div className="weather-detail-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
-            </svg>
-            <div className="weather-detail-text">
-              <span className="weather-detail-label">Feels Like</span>
-              <span className="weather-detail-value">{Math.round(feelsLike)}°</span>
-            </div>
-          </div>
-
           <div className="weather-detail-item">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
