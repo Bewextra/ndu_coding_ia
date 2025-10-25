@@ -4,15 +4,18 @@
   align-items: center;
   justify-content: center;
   padding: 3rem 2rem;
-  background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.95) 100%);
+  border-radius: 24px;
+  box-shadow: 
+    0 8px 32px rgba(239, 68, 68, 0.15),
+    0 4px 16px rgba(239, 68, 68, 0.1);
   text-align: center;
-  border: 2px solid #fed7d7;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  backdrop-filter: blur(10px);
 }
 
-.error-icon {
-  color: #f56565;
+.error-sengi-wrapper {
+  position: relative;
   margin-bottom: 1.5rem;
   animation: shake 0.5s ease-in-out;
 }
@@ -22,10 +25,34 @@
     transform: translateX(0);
   }
   25% {
-    transform: translateX(-10px);
+    transform: translateX(-8px);
   }
   75% {
-    transform: translateX(10px);
+    transform: translateX(8px);
+  }
+}
+
+.error-sengi {
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.15));
+}
+
+.error-question-mark {
+  position: absolute;
+  top: -10%;
+  right: -15%;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ef4444;
+  animation: questionShake 1s ease-in-out infinite;
+  text-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+}
+
+@keyframes questionShake {
+  0%, 100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
   }
 }
 
@@ -114,6 +141,16 @@
     padding: 2rem 1.5rem;
   }
 
+  .error-sengi {
+    width: 90px;
+    height: 90px;
+  }
+
+  .error-question-mark {
+    font-size: 2.5rem;
+    right: -10%;
+  }
+
   .error-title {
     font-size: 1.25rem;
   }
@@ -129,6 +166,14 @@
   .retry-button {
     padding: 0.75rem 1.75rem;
     font-size: 0.9375rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .error-question-mark {
+    font-size: 2rem;
+    right: -5%;
+    top: -5%;
   }
 }
 

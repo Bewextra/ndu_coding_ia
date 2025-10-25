@@ -27,8 +27,8 @@
 
 .question-mark {
   position: absolute;
-  top: 25%;
-  right: 30%;
+  top: 15%;
+  right: 38%;
   font-size: 4rem;
   font-weight: 700;
   background: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
@@ -81,7 +81,8 @@
 
   .question-mark {
     font-size: 3rem;
-    right: 25%;
+    right: 32%;
+    top: 12%;
   }
 
   .welcome-text {
@@ -92,8 +93,8 @@
 @media (max-width: 480px) {
   .question-mark {
     font-size: 2.5rem;
-    right: 20%;
-    top: 20%;
+    right: 28%;
+    top: 15%;
   }
 }
 
