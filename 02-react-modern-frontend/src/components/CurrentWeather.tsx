@@ -70,7 +70,7 @@ const CurrentWeather = ({ weatherData }: CurrentWeatherProps) => {
             <span className="weather-feels-like">Feels like {Math.round(feelsLike)}°</span>
             <span className="weather-description">{description}</span>
           </div>
-          <Sengi />
+          <Sengi temperature={temperature} description={description} />
         </div>
 
         <div className="weather-details">
