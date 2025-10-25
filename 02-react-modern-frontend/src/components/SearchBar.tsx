@@ -20,6 +20,12 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
     setCity(e.target.value);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && city.trim()) {
+      handleSubmit(e);
+    }
+  };
+
   return (
     <form className="search-bar" onSubmit={handleSubmit}>
       <input
@@ -28,6 +34,7 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
         placeholder="Enter city name..."
         value={city}
         onChange={handleChange}
+        onKeyDown={handleKeyDown}
         aria-label="City search input"
       />
       <button type="submit" className="search-button" aria-label="Search city">

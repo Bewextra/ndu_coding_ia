@@ -13,6 +13,30 @@
   --cyan-600: #0891b2;
   --emerald-500: #10b981;
   --emerald-600: #059669;
+  
+  /* Animation durations */
+  --transition-fast: 0.2s;
+  --transition-normal: 0.3s;
+  --transition-slow: 0.5s;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+  --shadow-glow-cyan: 0 0 20px rgba(6, 182, 212, 0.3);
+  --shadow-glow-emerald: 0 0 20px rgba(16, 185, 129, 0.3);
+}
+
+/* Global smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhance focus visibility for accessibility */
+*:focus-visible {
+  outline: 3px solid rgba(6, 182, 212, 0.5);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 * {

@@ -9,6 +9,7 @@ import WelcomeSengi from './components/WelcomeSengi';
 import useWeather from './hooks/useWeather';
 import useLocalStorage from './hooks/useLocalStorage';
 import './App.css';
+import './components/polish.css';
 
 interface FavoriteCity {
   name: string;
