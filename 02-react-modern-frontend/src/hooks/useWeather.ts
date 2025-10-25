@@ -58,6 +58,9 @@ const useWeather = () => {
     setError('');
     setSearchedCity(city);
 
+    // Track when loading started
+    const loadingStartTime = Date.now();
+
     try {
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&units=metric&appid=${apiKey}`
@@ -108,6 +111,15 @@ const useWeather = () => {
       setWeatherData(undefined);
       setForecastData([]);
     } finally {
+      // Ensure loading screen shows for at least 1 second
+      const loadingDuration = Date.now() - loadingStartTime;
+      const minimumLoadingTime = 1000; // 1 second
+      
+      if (loadingDuration < minimumLoadingTime) {
+        // Wait for the remaining time
+        await new Promise(resolve => setTimeout(resolve, minimumLoadingTime - loadingDuration));
+      }
+      
       setLoading(false);
     }
   };
